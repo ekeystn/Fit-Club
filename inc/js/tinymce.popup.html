@@ -1,0 +1,59 @@
+<!Doctype html>
+<head>
+<title>YouTube Video Embed</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="tiny_mce_popup.js"></script>
+    <script>
+    
+    	var YoutubeTiny = {
+    		e: '',
+    		init: function(e) {
+    			YoutubeTiny.e = e;
+    			tinyMCEPopup.resizeToInnerSize();
+    		},
+    		insert: function createYoutubeShortcode(e) {
+    			//var videonum = $('#videonum').find(':selected').text();
+    			var video1 = $('#video1').val();
+    			var video2 = $('#video2').val();
+    			var video3 = $('#video3').val();
+    			var video4 = $('#video4').val();
+
+    			var output = '[youtube_embed video1="' + video1 + '" video2="' + video2 + '" video3="' + video3 + '" video4="' + video4 + '" /]';
+
+    			tinyMCEPopup.execCommand('mceReplaceContent', false, output);
+    			tinyMCEPopup.close();
+    		}
+    	}
+    	tinyMCEPopup.onInit.add(YoutubeTiny.init, YoutubeTiny);
+    
+    </script>
+</head>
+<body>
+<form id="videoshortcode">
+<p><label for="video1">Video 1 ID</label>
+	<input id="video1" type="text" value="" />
+</p>
+<p><label for="video2">Video 2 ID</label>
+	<input id="video2" type="text" value="" />
+</p>
+<p><label for="video3">Video 3 ID</label>
+	<input id="video3" type="text" value="" />
+</p>
+<p><label for="video4">Video 4 ID</label>
+	<input id="video4" type="text" value="" />
+</p>
+
+<p><a href="javascript:YoutubeTiny.insert(YoutubeTiny.e)">Insert Videos</a></p>
+</form>
+</body>
+</html>
+<!-- 
+ed.addCommand('youtube_embed', function(){
+                var id = prompt("Video ID"),
+                    width = prompt("Video Width", "640"),
+                    height = prompt("Video Height", "360"),
+                shortcode = '[youtube_embed video="' + id + '" width="' + width + '" height="' + height + '" /]';
+ 
+                ed.execCommand('mceInsertContent', 0, shortcode);
+            });
+-->
